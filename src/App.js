@@ -1,24 +1,26 @@
 import logo from './logo.svg';
-import './App.css';
-
+// import './App.css';
+import React,{useState} from 'react';
+import AuthContext from './context/AuthContext';
+import AuthHandler from './authHandler/AuthHandler';
+import Routes from './Routes/Routes';
 function App() {
+   const [isAuth, setAuth] = useState(false);
+
+   const onLogin = () =>{
+    setAuth(true);
+   }
+   const onLogOut = () =>{
+    setAuth(false);
+   }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-          sadsadasdasdx``
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes />
+      {/* <AuthContext.Provider value={{
+        isLoggedIn : isAuth
+      }}>
+        <AuthHandler onLogin={onLogin} onLogOut={onLogOut}/>
+      </AuthContext.Provider> */}
     </div>
   );
 }
